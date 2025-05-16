@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Recommendation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .meme-wrapper {
+            margin: 15px;
+            display: inline-block;
+            text-align: center;
+            width: 200px;
+        }
+        .meme {
+            max-width: 200px;
+            max-height: 200px;
+            cursor: pointer;
+            border: 3px solid transparent;
+        }
+        .meme.selected {
+            border-color: #4CAF50;
+        }
+        .feedback-slider {
+            width: 180px;
+            margin: 5px 0;
+        }
+        .score-display {
+            display: inline-block;
+            width: 20px;
+            text-align: center;
+        }
+        #refine-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #search-button {
+            padding: 10px 20px;
+            background: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+        #search-button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body data-group-id="{{ group_id }}">
+    <h1>Select 5 Memes You Like</h1>
+    <div id="meme-container"></div>
+    <button id="search-button" disabled>Find Similar Memes</button>
+    <p id="loading-message" style="display: none;">Loading memes...</p>
+
+    <div id="results-container">
+        <h2>Standard Recommendations</h2>
+        <div id="method1-results"></div>
+
+        <h2>Personalized Recommendations</h2>
+        <div id="method2-results"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
